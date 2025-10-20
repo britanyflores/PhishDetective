@@ -15,9 +15,23 @@ document.getElementById("scanBtn").addEventListener("click", async () => {
       return;
     }
 
-    if (!response || !response.success) {
+    if (!response) {
       resultDiv.textContent = "Could not scan URL. Please try again.";
       resultDiv.classList.add("result-warning");
+      return;
+    }
+
+    if (!response.reachable) {
+      if (response.safe) {
+        resultDiv.textContent = "The website is not reachable, but it is not flagged as unsafe by Google Safe Browsing.";
+        resultDiv.classList.add("result-warning");
+      } else {
+        resultDiv.innerHTML = `
+          <strong>Warning:</strong> The website is unreachable and also flagged as potentially unsafe by Google Safe Browsing.
+          <br><br><small>Tip: Always verify the website's domain name carefully. Do not enter any personal information or passwords unless you are certain the site is legitimate and trustworthy.</small>
+        `;
+        resultDiv.classList.add("result-unsafe");
+      }
       return;
     }
 
