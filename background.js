@@ -4,6 +4,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === "scan_url") {
     const url = message.url;
 
+    if (!isScannableUrl(url)) {
+      sendResponse({ success: false, reachable: false, scannable: false, error: "Unsupported URL scheme. Only http and https are allowed." });
+      return true;
+    }
+
     // Run your async code inside an IIFE
     (async () => {
       try {
@@ -11,10 +16,10 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         const reachable = await isReachable(url);
 
         const safe = await checkUrlWithGoogleSafeBrowsing(url);
-        sendResponse({ success: true, safe, reachable });
+        sendResponse({ success: true, safe, reachable, scannable: true });
       } catch (error) {
         console.error("Scan error:", error);
-        sendResponse({ success: false, reachable: false, error: error.message });
+        sendResponse({ success: false, reachable: false, scannable: true, error: error.message });
       }
     })();
 
@@ -69,4 +74,13 @@ async function checkUrlWithGoogleSafeBrowsing(url) {
 
   const data = await response.json();
   return !data.matches; // returns true if safe, false if matched
+}
+
+function isScannableUrl(url) {
+  try {
+    const parsed = new URL(url);
+    return parsed.protocol === "http:" || parsed.protocol === "https:";
+  } catch (e) {
+    return false;
+  }
 }

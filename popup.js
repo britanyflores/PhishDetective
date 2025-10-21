@@ -15,6 +15,12 @@ document.getElementById("scanBtn").addEventListener("click", async () => {
       return;
     }
 
+    if (!response.scannable) {
+      resultDiv.textContent = "This type of page cannot be scanned. Only regular websites (http/https) are supported.";
+      resultDiv.classList.add("result-warning")
+      return;
+    }
+
     if (!response) {
       resultDiv.textContent = "Could not scan URL. Please try again.";
       resultDiv.classList.add("result-warning");
