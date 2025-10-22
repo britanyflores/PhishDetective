@@ -104,3 +104,14 @@ body {
   color: #721c24;
   background-color: var(--muted-red);
 }
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  padding-left: 28px; /* leave room for the icon */
+  background-image: url('../icons/icon32.png');
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: left center;
+  gap: 8px;
+}
