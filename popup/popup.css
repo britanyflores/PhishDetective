@@ -1,3 +1,25 @@
+/*
+* File: ./popup/popup.css
+* Last Modified: October 22, 2025
+* Description: Stylesheet for the PhishDetective Chrome extension popup.
+*              Includes global colors, layout, header, main content, buttons,
+*              result box styling, and result status indicators.
+*/
+
+/* --- Table of Contents --- */
+/*
+* 1. Color Variables
+* 2. Base Styles
+* 3. Header
+* 4. Divider
+* 5. Main Content
+*    5a. Scan Button
+*    5b. Result Box
+*    5c. Result Status Styles
+*/
+
+
+/* =========================Color Variables================== */
 :root {
   --navy-blue: #1e3a5f;
   --navy-blue-muted: #e8edf5;
@@ -9,6 +31,7 @@
   --muted-green: #d4edda;
 }
 
+/* =========================Base Styles================== */
 body {
   margin: 0;
   padding: 0;
@@ -25,7 +48,7 @@ body {
   height: 100%;
 }
 
-/* Header Bar */
+/* =========================Header================== */
 .header {
   display: flex;
   justify-content: space-between;
@@ -35,6 +58,14 @@ body {
 }
 
 .logo {
+  display: inline-flex;
+  align-items: center;
+  padding-left: 28px; /* leave room for icon */
+  background-image: url('../icons/icon32.png');
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: left center;
+  gap: 8px;
   font-size: 18px;
 }
 
@@ -46,7 +77,7 @@ body {
   border-radius: 8px;
 }
 
-/* Divider */
+/* =========================Divider================== */
 .divider {
   border: none;
   height: 1px;
@@ -54,7 +85,7 @@ body {
   margin: 0 16px;
 }
 
-/* Main Content */
+/* =========================Main Content================== */
 .main {
   display: flex;
   flex-direction: column;
@@ -64,6 +95,7 @@ body {
   padding: 12px;
 }
 
+/* -------------------------Scan Button------------------------- */
 .scan-button {
   background-color: var(--navy-blue);
   color: white;
@@ -79,6 +111,7 @@ body {
   background-color: #163251;
 }
 
+/* -------------------------Result Box------------------------- */
 .result-box {
   margin-top: 16px;
   text-align: center;
@@ -89,7 +122,7 @@ body {
   width: 90%;
 }
 
-/* Result Status Styles */
+/* -------------------------Result Status Styles------------------------- */
 .result-safe {
   color: #155724;
   background-color: var(--muted-green);
@@ -105,13 +138,3 @@ body {
   background-color: var(--muted-red);
 }
 
-.logo {
-  display: inline-flex;
-  align-items: center;
-  padding-left: 28px; /* leave room for the icon */
-  background-image: url('../icons/icon32.png');
-  background-size: 20px 20px;
-  background-repeat: no-repeat;
-  background-position: left center;
-  gap: 8px;
-}
