@@ -3,8 +3,7 @@
   "name": "PhishDetective",
   "version": "1.0",
   "description": "Scan the current tab's URL for phishing or unsafe domains using Google Safe Browsing.",
-  "permissions": ["tabs"],
-  "host_permissions": ["<all_urls>"],
+  "permissions": ["activeTab"],
   "background": {
     "service_worker": "background.js",
     "type": "module"
