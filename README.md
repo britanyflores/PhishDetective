@@ -1,7 +1,7 @@
 # PhishDetective - Chrome Extension
 
 PhishDetective helps you stay safe online by scanning the website you’re currently visiting for potential phishing or unsafe domains.
-It uses the Google Safe Browsing API (via a secure backend hosted on GCP) to check if the page is known for phishing, malware, or other harmful activity — all in a single click.
+It uses the Google Safe Browsing API (via a secure backend hosted on GCP) to check if the page is known for phishing, malware, or other harmful activity, all in a single click.
 
 
 ## Features
@@ -48,7 +48,7 @@ API Used: Google Safe Browsing v4
 
 This extension requests only:
 
-activeTab — To read the current tab’s URL for scanning.
+activeTab → To read the current tab’s URL for scanning.
 
 No user data, browsing history, or other personal information is collected or stored.
 
